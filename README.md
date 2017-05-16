@@ -38,4 +38,4 @@ Finally start the application
 ```bash/cmd
 npm start
 ```
-Visit http://127.0.0.1/ on your browser
+Visit http://127.0.0.1:3000/ on your browser and register for an account
