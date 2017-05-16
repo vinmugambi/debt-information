@@ -2,7 +2,7 @@
   "name": "debt-information",
   "version": "1.0.0",
   "description": "\"An application to help users view their debt information\"",
-  "main": "appp",
+  "main": "app",
   "scripts": {
     "test": "mocha --timeout 15000",
     "start": "nodemon"

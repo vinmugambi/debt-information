@@ -1,28 +1,31 @@
 <div class="container login" style="margin-top: 1em;padding-top: 1em; padding-bottom: 5.7em; margin-bottom:7em">
 	<div class="row">
 		{{#if errorMessage}}
-			<div class="alert alert-danger col-sm-offset-4 col-xs-offset-1 col-xs-10 col-md-offset-4 col-lg-offset-4 col-lg-4 col-md-5 col-sm-5 text-center">
+			<div class="alert alert-danger col-sm-offset-4 col-xs-offset-1 col-xs-10 col-md-offset-4  col-md-4 col-sm-4 text-center">
 				<span class="glyphicon glyphicon-exclamation-sign"></span><br/>
 				{{errorMessage}}
 			</div>
 		{{/if}}
-		<div class="col-sm-offset-3 col-xs-offset-1 col-xs-10 col-md-offset-4 col-lg-offset-4 col-lg-4 col-md-5 col-sm-5 text-center"
-		style="padding: 0 1em;background: #f6f6fb;border-radius: 5px;border-top: 0.2em solid #c4ced5;border-bottom: 1px solid #c4ced5;border-radius: 10px;">
+		<div class="login-form col-sm-offset-3 col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4 col-sm-4 text-center">
 		<div class="head">
 			<h3>Log in</h3>
 		</div>
-			<form id="login" method="POST" action="/login" class="form-inline">
-				<div class="form-group" id="username" style="margin-bottom: 0.5em;">
-				  <label for="username">Username </label>
-					<input type="text" class="form-control" placeholder="Enter Your Username" name="username" required/>
+			<form id="login" method="POST" action="/login" class="form-vertical" style="margin-top: 4em">
+				<div class="input-group" id="username" style="margin-bottom: 0.5em;">
+				  <div class="input-group-addon login">
+				  	<span class="glyphicon glyphicon-user"></span>
+				  </div>
+					<input type="text" class="form-control login" placeholder="Username" name="username" required/>
 				</div>
-				<div class="form-group" id="password">
-					<label for="password">Password </label>
-					<input type="password" class="form-control" placeholder="Enter Your Password" name="password" required/>
+				<div class="input-group" id="password" style="margin-bottom: 20px">
+					<div class="input-group-addon login">
+				  	<span class="glyphicon glyphicon-lock"></span>
+				  </div>
+					<input type="password" class="form-control login" placeholder="Password" name="password" required/>
 				</div>
 				<p>Dont have an account <a href="/signup">register</a></p>
 				<div class="submit">
-						<button id="login" type="submit" class="btn btn-primary">Login</button>
+						<button id="login" type="submit" class="btn btn-primary btn-block">Login</button>
 				</div>
 			</form>
 		</div>
