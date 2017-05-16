@@ -9,7 +9,7 @@ postgres db
 git (not needed if you download fromthis page)
 
 ## Setup and Installation
-Clone this repository or download it. Then navigate to the root folder as follows
+Clone this repository. Then navigate to the root folder as follows
 ```bash/cmd
 git clone https://github.com/vinmugambi/debt-information.git
 cd debt-information-master
