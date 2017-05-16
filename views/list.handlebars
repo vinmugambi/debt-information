@@ -1,0 +1,51 @@
+{{!
+<form class="left" action="/search">
+	<input type="submit" class="btn btn-default btn-sm" name="search" value="<- Back to search">
+</form>
+}}
+{{#if list}}
+<div class="results col-sm-offset-1 col-xs-12 col-md-offset-2 col-lg-offset-2 col-lg-8 col-md-8 col-sm-10 text-center">
+	<form class="form-inline" style="margin-bottom:10px">
+		<a class="btn btn-primary btn-sm" id="download">download table</a>
+		<div class="input-group">
+			<input type="text" id="searchnow"name="search" class="form-control input-group input-sm" placeholder="Enter search term">
+			<div class="input-group-addon">
+				<span class="glyphicon glyphicon-search"></span>
+			</div>
+		</div>
+	</form>
+	<table width="100%" class="table-bordered table-striped" id="list">
+			 <thead>
+				 <tr>
+					 <th>NAME</th>
+					 <th>ID NO</th>
+					 <th>MOBILE</th>
+					 <th>INITIAL DEBT</th>
+					 <th>DATE GIVEN</th>
+					 <th>AMOUNT DUE</th>
+					 <th>DATE DUE</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 {{#each list}}
+				 <tr>
+					 <td>{{dataValues.debtor.dataValues.fullName}}</td>
+					 <td>{{dataValues.debtor.dataValues.nationalId}}</td>
+					<td>{{dataValues.debtor.dataValues.phoneNumber}}</td>
+					<td>{{dataValues.debtAmount}}</td>
+					<td>{{dataValues.dateOfIssue}}</td>
+					<td>{{dataValues.amountPaid}}</td>
+					<td>{{dataValues.dateDue}}</td>
+				</tr>
+				 {{/each}}
+			 </tbody>
+		 </table>
+</div>
+{{else}}
+huhS
+{{/if}}
+{{#if errorMessage}}
+	<div class="alert alert-info col-sm-offset-4 col-xs-offset-1 col-xs-10 col-md-offset-4 col-lg-offset-4 col-lg-4 col-md-5 col-sm-5 text-center">
+		{{errorMessage}}
+	</div>
+{{/if}}
