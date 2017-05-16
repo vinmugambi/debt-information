@@ -1,56 +1,60 @@
-//import the dependencies
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  logger = require("morgan"),
-  path = require("path"),
-  exphbs = require("express-handlebars"),
-  flash=require("connect-flash"),
-  session=require("cookie-session"),
-  passport=require("passport"),
-  cookieParser=require("cookie-parser");
-//initialize the express application
-const app = express();
+var express = require('express'),
+    app = express(),
+    setupPassport = require('./app/config/passport'),
+    flash = require('connect-flash'),
+    appRouter = require('./app/routes')(express),
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+		exphbs=require("express-handlebars"),
+		path=require("path"),
+    jsonParser = bodyParser.json()
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(logger("dev"));
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+var port = process.env.PORT || 8080
+
+app.use(cookieParser())
+app.use(session({ secret: '4564f6s4fdsfdfd', resave: false, saveUninitialized: false }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    compare: function( v1, op, v2, options ) {
+
+  var c = {
+    "eq": function( v1, v2 ) {
+      return v1 == v2;
+    },
+    "neq": function( v1, v2 ) {
+      return v1 != v2;
+    },
+  }
+
+  if( Object.prototype.hasOwnProperty.call( c, op ) ) {
+    return c[ op ].call( this, v1, v2 ) ? options.fn( this ) : options.inverse( this );
+  }
+  return options.inverse( this );
+}
+
+  }
+}));
 app.set('view engine', 'handlebars');
-app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'public')));
-app.disable("x-powered-by");
-app.use(flash());
-app.use(cookieParser());
-app.use(session({keys: ["hilueWEiut0270","lwtuyquy88HYgTtwh","..."]}));
 
-// require('./app/sign');
-require('./app/config/pass')(app);
-
-app.use("/",require('./app/controllers/sign'))
-//enable CORS
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
-//error flashing
+app.use(flash())
 app.use(function(req, res, next) {
-    res.locals.errorMessage = req.flash("error");
-    console.log(res.locals);
+    res.locals.errorMessage = req.flash('error')
     next()
 });
-app.use(function (req, res) {
-  res.status(404);
-  res.render('404');
-  console.log(req.user)
-});
-// custom 500 page
-app.use(function (err, req, res) {
-  console.error(err.stack);
-  res.status(500);
-  res.render('500');
-});
+app.use(jsonParser)
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
-module.exports = app;
+setupPassport(app)
+
+app.use('/', appRouter)
+
+// start app
+app.listen(port)
+console.log('Server started on port ' + port)
+
+module.exports.getApp = app

@@ -1,38 +1,46 @@
-module.exports= function(app){
-	let router=require("express").Router();
-	let passport=require("passport");
-	let userController= require("../controllers/user")
+var passport = require('passport'),
+    signupController = require('../controllers/user'),
+    debt=require("../controllers/debt")
 
-	router.route("/")
-	.get((req,res)=>{
-		res.redirect("login");
-	})
+module.exports = function() {
+  var router = require('express').Router()
 
+  var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated())
+      return next()
+    req.flash('error', 'You have to be logged in to access the page.')
+    res.redirect('/')
+  }
 
-router.get("/account",(req,res)=>{
-	if (req.user) res.render('dashboard')
-	else res.redirect("/login")
-})
+//  router.get('/signup', signupController.show)
+  router.post('/signup', signupController.register)
 
-	router.route("/login")
-	.get((req,res)=>{
-		if (req.user) res.render("dashboard");
-		else res.render("login");
-	})
-	.post(passport.authenticate('local', {
-      successRedirect: '/account',
-      failureRedirect: '/login',
+  router.post('/login', passport.authenticate('local', {
+      successRedirect: '/search',
+      failureRedirect: '/',
       failureFlash: true
   }))
 
-	router.route("/register")
-	.get((req,res)=>res.render("signup"))
-	.post(userController.register)
+  router.get('/', function(req, res) {
+    res.render('login')
+  })
 
-	router.get('/logout', (req, res) =>{
+  router.route("/list")
+   .get(debt.list)
+
+	router.get("/signup",(req,res)=>res.render("signup"))
+
+  router.route("/search")
+    .get(isAuthenticated, function(req, res) {
+		res.locals.user=req.user;
+    res.render('dashboard')
+  })
+    .post(debt.search);
+
+  router.get('/logout', function(req, res) {
     req.logout()
     res.redirect('/')
   })
 
-	app.use("/",router)
+  return router
 }
