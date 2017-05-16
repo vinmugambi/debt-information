@@ -4,8 +4,7 @@
   "description": "\"An application to help users view their debt information\"",
   "main": "app",
   "scripts": {
-    "test": "mocha --timeout 15000",
-    "start": "nodemon"
+    "start": "node app"
   },
   "engines": {
     "node": "6.9.2"
@@ -27,18 +26,19 @@
   "homepage": "https://github.com/vinmugambi/debt-information#readme",
   "dependencies": {
     "chalk": "^1.1.3",
-    "connect-roles": "^3.1.2",
-    "passport-local-roles": "^1.0.1",
-    "passport-local-sequelize": "^0.7.0",
-    "pg": "^6.1.5",
-    "pg-format": "^1.0.4",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "shortid": "*",
+    "express": "^4.10.0",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "passport-local": "*",
+    "passport": "*",
+    "express-handlebars": "3.0.0",
+    "bcrypt-nodejs": "*",
+    "express-session": "*",
+    "connect-flash": "*"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
-    "mocha": "^3.3.0",
     "nodemon": "*"
   }
 }

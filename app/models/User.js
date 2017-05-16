@@ -28,7 +28,7 @@ const account = {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
-	role:{
+	role: {
 		type: Sequelize.STRING,
 		allowNull: false
 	},

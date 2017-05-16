@@ -1,6 +1,6 @@
-const Sequelize=require("sequelize");
+const Sequelize = require("sequelize");
 
-module.exports= {
+module.exports = {
 	fullName: {
 		type: Sequelize.STRING,
 		allowNull: false,

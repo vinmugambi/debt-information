@@ -1,39 +1,39 @@
 <div class="container">
-    <div class="row" style="margin-bottom: 1em;">
-      <div class="search col-sm-offset-4 col-xs-12 col-sm-4 text-center">
-        <form class="form-inline" method="post" action="/search">
-          <div class="form-group">
-            <input type="number" name="number" class="form-control" minlength="8" maxlength="10" placeholder="phone or national id">
-              <button type="submit" class="btn btn-default">find user</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="row">
-        <div class="results col-sm-offset-1 col-xs-12 col-md-offset-2 col-lg-offset-2 col-lg-8 col-md-8 col-sm-10 text-center">
-          {{#if profile}}
-          <table width="100%" class="table-bordered table-stripped">
-               <thead>
-                 <tr>
-                   <th>NAME</th>
-                   <th>ID NUMBER</th>
-                   <th>CONTACT</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>{{profile.fullName}}</td>
-                   <td>{{profile.nationalId}}</td>
-                   <td>{{profile.phoneNumber}}</td>
-                 </tr>
-               </tbody>
-             </table>
-          {{/if}}
+  <div class="row" style="margin-bottom: 1em;">
+    <div class="search col-sm-offset-4 col-xs-12 col-sm-4 text-center">
+      <form class="form-inline" method="post" action="/search">
+        <div class="form-group">
+          <input type="number" name="number" class="form-control" minlength="8" maxlength="10" placeholder="phone or national id">
+          <button type="submit" class="btn btn-default">find user</button>
         </div>
-        {{#if errorMessage}}
-          <div class="alert alert-info col-sm-offset-4 col-xs-offset-1 col-xs-10 col-md-offset-4 col-lg-offset-4 col-lg-4 col-md-5 col-sm-5 text-center">
-            {{errorMessage}}
-          </div>
-        {{/if}}
-      </div>
-		</div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="results col-sm-offset-1 col-xs-12 col-md-offset-2 col-lg-offset-2 col-lg-8 col-md-8 col-sm-10 text-center">
+      {{#if profile}}
+      <table width="100%" class="table-bordered table-stripped">
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>ID NUMBER</th>
+            <th>CONTACT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{profile.fullName}}</td>
+            <td>{{profile.nationalId}}</td>
+            <td>{{profile.phoneNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+      {{/if}}
+    </div>
+    {{#if errorMessage}}
+    <div class="alert alert-info col-sm-offset-4 col-xs-offset-1 col-xs-10 col-md-offset-4 col-lg-offset-4 col-lg-4 col-md-5 col-sm-5 text-center">
+      {{errorMessage}}
+    </div>
+    {{/if}}
+  </div>
+</div>
