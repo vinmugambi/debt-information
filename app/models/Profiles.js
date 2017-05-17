@@ -17,5 +17,8 @@ module.exports = {
 		validate: {
 			is: /^[0-9\-]+$/i
 		}
+	},
+	rating:{
+		type: Sequelize.FLOAT
 	}
 }

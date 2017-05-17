@@ -37,14 +37,15 @@ module.exports = function (app) {
 		})
 	}));
 
-	passport.serializeUser((user, cb) => cb(null, user._id));
-	passport.deserializeUser((id, cb) => {
-		Model.User.findOne({
-			"_id": id
-		}).then((user) => {
-			if (!user) return cb(new Error("Wrong User id"));
-			else if (user) return cb(null, user);
-			else return cb("Something went Wrong. Try again later", false)
-		})
+passport.serializeUser((user, cb) => cb(null, user.id));
+passport.deserializeUser(function(id, done) {
+	Model.User.findOne({
+		where: {
+			'id': id
+		}
+	}).then(function (user) {
+		if (user == null) done(new Error('Wrong user id.'))
+    else done(null, user)
 	})
+})
 }

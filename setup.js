@@ -4,23 +4,36 @@ const connection = require("./app/config/sequelize");
 
 var Listings = Models.Listings;
 var Profiles = Models.Profiles;
-
 var Debtor = Listings.belongsTo(Profiles, { as: "debtor" });
 
 connection.sync({ force: true })
 	.then(() => {
-		debtAmount: 200.00,
-			Listings.create({
-				debtor: {
-					fullName: "SINATRA MWENDA",
-					nationalId: 32290939,
-					phoneNumber: 700455049,
-				}
-			},
-				{
-					include: [Debtor]
-				}
-			);
+		Models.User.create({
+			username: "vinmugambi",
+			password: "$2a$10$LiqhTxrQYhDmZj/n3T7X7ubm/wEqTF8cH7REk9vQCrs5DATw.rFVC",
+			salt: "$2a$10$LiqhTxrQYhDmZj/n3T7X7u",
+			role: "roleA"
+		})
+
+		Models.User.create({
+			username: "vinmugambi17",
+			password: "$2a$10$3zMdDc.GqN8RaiFUlm2N2ubiRfB1WxbVHUaeMI1wZQhQ0.XzIYBGu",
+			salt: "$2a$10$3zMdDc.GqN8RaiFUlm2N2u",
+			role: "roleB"
+		})
+
+		Listings.create({
+			debtAmount: 200.00,
+			debtor: {
+				fullName: "SINATRA MWENDA",
+				nationalId: 32290939,
+				phoneNumber: 700455049,
+			}
+		},
+			{
+				include: [Debtor]
+			}
+		);
 
 		Listings.create({
 			debtAmount: 456.06,

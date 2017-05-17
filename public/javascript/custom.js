@@ -1,5 +1,6 @@
 $(function () {
-	$("#search").keyup(function () {
+	$("#searchnow").keyup(function () {
+		console.log(this.value)
 		var value = (typeof (this.value) !== Number) ? this.value.toLowerCase().trim() : this.value.trim();
 		//support for phone number saved without prepending zero
 		var removedzero = (value.indexOf(0) == 0) ? value.slice(1) : value;

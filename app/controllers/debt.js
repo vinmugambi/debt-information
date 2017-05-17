@@ -23,7 +23,6 @@ exports.search = (req, res) => {
 			if (profile) {
 				res.locals.profile = profile.dataValues;
 				res.locals.user = req.user;
-				console.log(chalk.blue(req.user))
 				res.render("dashboard").json(profile);
 			} else if (!profile) {
 				req.flash("error", "User not found!")
@@ -38,8 +37,8 @@ exports.search = (req, res) => {
 }
 
 exports.list = (req, res) => {
-	if (!req.user || req.user.dataValues.role !== "role1") {
-		req.flash("error", "You are not authorised to view this content");
+	if (!req.user || req.user.dataValues.role !== "roleA") {
+		req.flash("error", "You are not authorised to view the content linked to view list button");
 		res.redirect("search");
 	} else {
 		Model.Listings.findAll({
@@ -48,7 +47,6 @@ exports.list = (req, res) => {
 			if (listings) {
 				res.locals.list = listings;
 				res.locals.user = req.user;
-				console.log(chalk.blue(listings[0].dataValues.debtor.dataValues.fullName))
 				res.render("list")
 			} else {
 				res.flash("error", "No listings were found!")

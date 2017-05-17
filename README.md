@@ -5,14 +5,14 @@ This is an expressjs application that enables authenticated users to view the de
 ## Prerequisites
 
 nodejs version 4.7 and above,
-postgres db
-git (not needed if you download fromthis page)
+postgres db,
+git (not needed if you download from this page)
 
 ## Setup and Installation
 Clone this repository. Then navigate to the root folder as follows
 ```bash/cmd
 git clone https://github.com/vinmugambi/debt-information.git
-cd debt-information-master
+cd debt-information
 ```
 Make sure you have installed postgres database and created a user with password.
 Change the postgres connection string in app/config/sequelize.js to suit your database name, password, port ,host address,and user in the following format.
@@ -38,4 +38,5 @@ Finally start the application
 ```bash/cmd
 npm start
 ```
-Visit http://127.0.0.1:3000/ on your browser and register for an account
+Visit http://127.0.0.1:3000/ on your browser.
+

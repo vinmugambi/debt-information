@@ -12,8 +12,6 @@ module.exports = function() {
     res.redirect('/')
   }
 
-//  router.get('/signup', signupController.show)
-  router.post('/signup', signupController.register)
 
   router.post('/login', passport.authenticate('local', {
       successRedirect: '/search',
@@ -28,11 +26,10 @@ module.exports = function() {
   router.route("/list")
    .get(debt.list)
 
-	router.get("/signup",(req,res)=>res.render("signup"))
-
   router.route("/search")
     .get(isAuthenticated, function(req, res) {
 		res.locals.user=req.user;
+    console.log(req.user);
     res.render('dashboard')
   })
     .post(debt.search);

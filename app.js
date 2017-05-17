@@ -3,7 +3,7 @@ var express = require('express'),
     passport = require('./app/config/passport'),
     flash = require('connect-flash'),
     routes = require('./app/routes')(express),
-    session = require('express-session'),
+    session = require('cookie-session'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
 		exphbs=require("express-handlebars"),
@@ -11,28 +11,9 @@ var express = require('express'),
 
 app.set("port",process.env.PORT || 3000 )
 app.use(cookieParser())
-app.use(session({ secret: '&TYUTufkdu8727910hsh', resave: false, saveUninitialized: false }))
+app.use(session({keys: ["hilueWEiut0270","lwtuyquy88HYgTtwh","..."]}));
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main',
-  helpers: {
-    compare: function( v1, op, v2, options ) {
-
-  var c = {
-    "eq": function( v1, v2 ) {
-      return v1 == v2;
-    },
-    "neq": function( v1, v2 ) {
-      return v1 != v2;
-    },
-  }
-
-  if( Object.prototype.hasOwnProperty.call( c, op ) ) {
-    return c[ op ].call( this, v1, v2 ) ? options.fn( this ) : options.inverse( this );
-  }
-  return options.inverse( this );
-}
-
-  }
+  defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
