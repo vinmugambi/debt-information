@@ -29,7 +29,6 @@ module.exports = function() {
   router.route("/search")
     .get(isAuthenticated, function(req, res) {
 		res.locals.user=req.user;
-    console.log(req.user);
     res.render('dashboard')
   })
     .post(debt.search);

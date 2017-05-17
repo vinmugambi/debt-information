@@ -35,7 +35,7 @@
     "passport": "*",
     "express-handlebars": "3.0.0",
     "bcrypt-nodejs": "*",
-    "express-session": "*",
+    "cookie-session": "*",
     "connect-flash": "*"
   },
   "devDependencies": {
