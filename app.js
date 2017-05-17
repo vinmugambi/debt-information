@@ -44,4 +44,4 @@ app.use(function (err, req, res) {
 
 // start app
 app.listen(app.get('port'));
-console.log("Application is running on port %s ",app.get('port'));
+console.log("Application is listening on port %s ",app.get('port'));

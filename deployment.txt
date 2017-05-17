@@ -1,0 +1,70 @@
+/*
+* Terminal commands are enclosed between ``` and ``` the same way its done on .md files
+*/
+The requirements for the application to run are nodejs and posstgres database.Since DevTest-002.pdf indicates that there is already a 
+postgres database in place I'm going to cover installation of nodejs on a debian/ubuntu linux distributions. Node js is needed for running 
+server side javascript.
+
+INSTALLATION OF NODEJS
+
+Copy the following commands on your terminal to install nodejs and npm. curl command line tool is needed. Incase the first command fails you
+should install curl by typing sudo apt install curl
+
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+After the libraries are downloaded run the following commands to confirm nodejs and its package manager (npm) were correctly installed
+
+```
+node -v
+npm -v
+```
+
+RUNNING THE APPLICATION
+
+Clone the repository at https://github.com/vinmugambi/debt-information ie and navigate to the projects root folder. 
+
+```
+git clone git clone https://github.com/vinmugambi/debt-information.git
+cd debt-information
+```
+
+Then run the following command to install the application dependencies specified on the package.json file in the root of the application
+
+```
+npm install
+```
+
+Incase you are using a different db other than the one specified in DevTest-002.pdf then you should edit app/config/sequelize.js to conform to
+your database as directed in the comments preceeding the code.
+
+You should then run the setup.js file on the root folder as follows
+
+```
+node setup.js
+```
+The above command will create three tables namely tbl_users, tbl_due_listing and tbl_profiles and drop any existing tables with those names.
+This can be justified by the fact that no data fields in the DevTest-002.pdf therefore anyone can name his/her columns the way he/she wants.
+Incase the table doesnt have columns the app requires to function the application will fail. This app also uses associations to limit duplication.
+
+The command also creates some dummy data in all the tables. The passwords in tbl_users are hashed using bcrypt arising need to  add an extra salt 
+column on the table 
+
+Finally run the application by typing the following on the terminal
+
+```
+npm start
+```
+You should see "Application is listening on port 3000" on the console.
+
+Visit 127.0.0.1:3000/ on your browser
+
+LOGIN CREDENTIALS
+RoleA -> username: vinmugambi, password: vin
+RoleB -> username: vinmugambi17, password: muga
+
+
+
