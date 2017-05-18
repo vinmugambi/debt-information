@@ -1,0 +1,74 @@
+/*
+* Terminal commands are enclosed between ``` and ``` the same way its done on .md files
+*/
+The requirements for the application to run are nodejs and posstgres database. Since DevTest-002.pdf indicates that there is already a 
+postgres database in place, I'm going to cover installation of nodejs on a debian/ubuntu linux distributions which will be responsible for 
+running server side javascript. 
+
+Other tools needed are curl and git which come bundled together with popular linux distributions. 
+
+INSTALLATION OF NODEJS
+
+Copy the following commands on your terminal to install nodejs and npm. 
+
+```
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+After the libraries are downloaded run the following commands to confirm nodejs and its package manager (npm) were correctly installed
+
+```
+node -v
+npm -v
+```
+
+RUNNING THE APPLICATION
+
+Clone the repository at https://github.com/vinmugambi/debt-information and navigate to the projects root folder by running the following commands. 
+
+```
+git clone https://github.com/vinmugambi/debt-information.git
+cd debt-information
+```
+
+Then run the following command to install the application dependencies specified on the package.json file in the root of the application
+
+```
+npm install
+```
+
+NOTE: Incase you are using a different database other than the one specified in DevTest-002.pdf then you should edit app/config/sequelize.js to conform to
+      your database as directed in the comments preceeding the code.
+
+      ```js 
+      app/config/sequelize.js
+
+      const sequelize = new Sequelize('postgres://db_username:db_password@db_host:db_port/db_name')
+      ```
+
+
+You should then run the setup.js file found on the top level directory as follows
+
+```
+node setup.js
+```
+The above command will overwrite any tables named any of this names: tbl_users,tbl_profiles,tbl_due_listings and create new ones.
+It also enters dummy data into  all the tables it creates. The passwords in tbl_users are hashed using bcrypt.
+column on the table 
+
+Finally run the application by typing the following on the terminal
+
+```
+npm start
+```
+You should see "Application is listening on port 3000" on the console.
+
+Visit 127.0.0.1:3000/ on your browser
+
+LOGIN CREDENTIALS
+RoleA -> username: vinmugambi, password: vin
+RoleB -> username: vinmugambi17, password: muga
+
+
+
