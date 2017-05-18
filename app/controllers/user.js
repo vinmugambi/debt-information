@@ -3,13 +3,13 @@ const bcrypt = require('bcrypt-nodejs'),
 
 exports.register = (req, res) => {
   let account = req.body;
-  console.log(account)
+  //console.log(account)
   if (!account.username || !account.password || !account.confirm ) {
     req.flash("error", "All the fields are required");
     res.redirect('/signup');
   }
   else if (account.password !== account.confirm) {
-    console.log("unmatching password", "echoed by userController")
+    //console.log("unmatching password", "echoed by userController")
     req.flash("error", "Passwords do not match");
     res.redirect("/signup")
   }
@@ -26,7 +26,7 @@ exports.register = (req, res) => {
               password: hash,
               role: account.role
             }
-            console.log(newAccount)
+            //console.log(newAccount)
             Model.User.create(newAccount).then(() => res.redirect("/"))
               .catch((error) => {
                 console.log(error.name);

@@ -15,8 +15,10 @@
   },
   "keywords": [
     "express",
-    "mongo",
-    "javascript"
+    "postgres",
+    "javascript",
+    "excel",
+    "jquery"
   ],
   "author": "Mugambi_Vin@twitter.com",
   "license": "ISC",
