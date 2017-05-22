@@ -18,7 +18,7 @@ module.exports = {
 			is: /^[0-9\-]+$/i
 		}
 	},
-	rating:{
-		type: Sequelize.FLOAT
+	branch:{
+		type: Sequelize.STRING
 	}
 }

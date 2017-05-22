@@ -4,16 +4,26 @@
 }
 
 .navbar li{
-	padding-left: 0.3em;
+	margin-left: 0.3em;
 }
 
-.navbar ul{
-	padding: 0.5em 1.5em;
-	border: 1 px solid green;
+.navbar ul:last-child{
+	margin-left: 1em;
 }
-
+.navbar-default .navbar-nav > li > a{
+	margin-bottom: 1px;
+	max-height: 49px;
+}
+.navbar-default .navbar-nav > li > a.active,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+			color: #337ab7;
+			background-color: #eef;
+			border-bottom: 2px solid #337ab7;
+			margin-bottom: 0px;
+			max-height: 49px;
+}
 .head{
-	background-color: ;
 	padding: 0.6em;
 	margin-bottom: 1em;
 	border-radius: 0 0 15px 15px;
@@ -22,6 +32,9 @@
 select option{
 	color: green;
 	background:#e7f6ec ;
+}
+.highlight{
+	background: yellow;
 }
 .submit{
 	background-color: ;
@@ -70,6 +83,6 @@ input-group-addon.login{
 }
 @media only screen and (max-width: 768px){
   .navbar-header{
-		padding-left: 37%;
+		padding-left: 35%;
 	}
 }

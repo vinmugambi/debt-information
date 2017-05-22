@@ -28,6 +28,7 @@ connection.sync({ force: true })
 				fullName: "SINATRA MWENDA",
 				nationalId: 32290939,
 				phoneNumber: 700455049,
+				branch: "Lamu"
 			}
 		},
 			{
@@ -42,7 +43,8 @@ connection.sync({ force: true })
 			debtor: {
 				fullName: "DEBORAH MWANGI",
 				nationalId: 23894000,
-				phoneNumber: 784558006
+				phoneNumber: 784558006,
+				branch: "Rongai"
 			}
 		},
 			{
@@ -59,6 +61,7 @@ connection.sync({ force: true })
 				fullName: "DENNIS ODHIAMBO",
 				nationalId: 26899300,
 				phoneNumber: 709000056,
+				branch: "Westlands"
 			}
 		},
 			{
@@ -75,6 +78,7 @@ connection.sync({ force: true })
 				fullName: "AGNES WAMBUA",
 				nationalId: 22394900,
 				phoneNumber: 735898024,
+				branch: "Kisii"
 			}
 		},
 			{
@@ -90,6 +94,7 @@ connection.sync({ force: true })
 				fullName: "HANNAH SIMIYU",
 				nationalId: 21909048,
 				phoneNumber: 748895809,
+				branch: "Kisii"
 			}
 		},
 			{
@@ -106,6 +111,58 @@ connection.sync({ force: true })
 				fullName: "ALLAN MURAYA",
 				nationalId: 34009587,
 				phoneNumber: 795880580,
+				branch: "Murang'a"
+			}
+		},
+			{
+				include: [Debtor]
+			}
+		);
+
+		Listings.create({
+			debtAmount: 40000.00,
+			amountPaid: 20000.00,
+			dateDue: new Date(Date.now() + 1000 * 60 * 60 * 24 * 200).toLocaleDateString(),
+			dateOfIssue: "29/3/2017",
+			debtor: {
+				fullName: "ESTHER NYAMBOKE",
+				nationalId: 26895090,
+				phoneNumber: 78394898,
+				branch: "Kisumu"
+			}
+		},
+			{
+				include: [Debtor]
+			}
+		);
+
+		Listings.create({
+			debtAmount: 490.00,
+			amountPaid: 50.00,
+			dateDue: new Date(Date.now() + 1000 * 60 * 60 * 24 * 20).toLocaleDateString(),
+			dateOfIssue: "21/5/2017",
+			debtor: {
+				fullName: "WILBERFOCE KIRIMA",
+				nationalId: 23800200,
+				phoneNumber: 745909006,
+				branch: "Eldoret"
+			}
+		},
+			{
+				include: [Debtor]
+			}
+		);
+
+		Listings.create({
+			debtAmount: 4000.00,
+			amountPaid: 200.00,
+			dateDue: new Date(Date.now() + 1000 * 60 * 60 * 24 * 200).toLocaleDateString(),
+			dateOfIssue: "02/4/2017",
+			debtor: {
+				fullName: "KESSIAH WANJIKU",
+				nationalId: 28946470,
+				phoneNumber: 789409050,
+				branch: "Nakuru"
 			}
 		},
 			{
@@ -113,8 +170,6 @@ connection.sync({ force: true })
 			}
 		);
 	})
-
-
 	.then(() => {
 		//create timeout to ensure that it does not exit before data is seeded.
 		setTimeout(() => {

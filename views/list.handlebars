@@ -3,18 +3,19 @@
 	<form class="form-inline" style="margin-bottom:10px">
 		<a class="btn btn-primary btn-sm" id="download">download table</a>
 		<div class="input-group">
-			<input type="text" id="searchnow" name="search" class="form-control input-group input-sm" placeholder="Enter search term">
+			<input type="text" id="searchnow" name="search" class="form-control input-group input-sm" placeholder="Enter search term" autocomplete="off">
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-search"></span>
 			</div>
 		</div>
 	</form>
-	<table width="100%" class="table-bordered table-striped" id="list">
+	<table width="100%" class="table-bordered" id="list">
 		<thead>
 			<tr>
 				<th>NAME</th>
 				<th>ID NO</th>
 				<th>MOBILE</th>
+				<th>BRANCH</th>
 				<th>INITIAL DEBT</th>
 				<th>DATE GIVEN</th>
 				<th>AMOUNT PAID</th>
@@ -27,6 +28,7 @@
 				<td>{{dataValues.debtor.dataValues.fullName}}</td>
 				<td>{{dataValues.debtor.dataValues.nationalId}}</td>
 				<td>{{dataValues.debtor.dataValues.phoneNumber}}</td>
+				<td>{{dataValues.debtor.dataValues.branch}}</td>
 				<td>{{dataValues.debtAmount}}</td>
 				<td>{{dataValues.dateOfIssue}}</td>
 				<td>{{dataValues.amountPaid}}</td>
