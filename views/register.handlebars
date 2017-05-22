@@ -1,0 +1,40 @@
+<div class="container register" style="padding-top: 0; padding-bottom: 2em;">
+	<div class="row">
+		{{#if errorMessage}}
+		<div class="alert alert-danger col-sm-offset-4 col-xs-offset-1 col-xs-10 col-sm-4 text-center">
+			<span class="glyphicon glyphicon-exclamation-sign"></span><br/> {{errorMessage}}
+		</div>
+		{{/if}}
+		<div class="login-form col-sm-offset-4 col-xs-offset-1 col-xs-10 col-sm-4 text-center">
+			<div class="head">
+				<h3>Register a new account</h3>
+			</div>
+			<form id="register" method="post" action="/register">
+				<div class="form-group" id="username" style="margin-bottom: 0.5em;">
+					<label for="role">Role </label>
+					<select type="text" name="role" id="role" class="role form-control" required>
+						<option disabled selected hidden>Pick The Desired Role</option>
+						<option value="roleA">RoleA</option>
+						<option value="roleB">RoleB</option>
+					</select>
+				</div>
+				<div class="form-group" id="username" style="margin-bottom: 0.5em;">
+					<label for="username">Username </label>
+					<input type="text" class="form-control" placeholder="Enter Your Desired Username" name="username" required/>
+				</div>
+				<div class="form-group" id="password">
+					<label for="password">Password </label>
+					<input type="password" class="form-control" placeholder="Enter Your Password" name="password" required/>
+				</div>
+				<div class="form-group" id="confirm">
+					<label for="confirm">Confirm Password </label>
+					<input type="password" class="form-control" placeholder="Re-Enter Your Password" name="confirm" required/>
+				</div>
+				<p style="margin-top:2em">Aready have an account <a href="/">login</a></p>
+				<div class="submit">
+					<button id="login" type="submit" class="btn btn-success btn-block">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,8 +1,8 @@
 var passport = require('passport'),
-    signupController = require('../controllers/user'),
-    debt=require("../controllers/debt")
+  registerController = require('../controllers/user'),
+  debt = require("../controllers/debt")
 
-module.exports = function() {
+module.exports = function () {
   var router = require('express').Router()
 
   var isAuthenticated = function (req, res, next) {
@@ -14,26 +14,34 @@ module.exports = function() {
 
 
   router.post('/login', passport.authenticate('local', {
-      successRedirect: '/search',
-      failureRedirect: '/',
-      failureFlash: true
+    successRedirect: '/search',
+    failureRedirect: '/',
+    failureFlash: true
   }))
 
-  router.get('/', function(req, res) {
+  router.route("/register")
+    .post(registerController.register)
+    .get((req, res) => res.render("register"));
+
+  router.get('/', function (req, res) {
+    res.render('login')
+  })
+
+  router.get('/login', function (req, res) {
     res.render('login')
   })
 
   router.route("/list")
-   .get(debt.list)
+    .get(debt.list)
 
   router.route("/search")
-    .get(isAuthenticated, function(req, res) {
-		res.locals.user=req.user;
-    res.render('dashboard')
-  })
+    .get(isAuthenticated, function (req, res) {
+      res.locals.user = req.user;
+      res.render('dashboard')
+    })
     .post(debt.search);
 
-  router.get('/logout', function(req, res) {
+  router.get('/logout', function (req, res) {
     req.logout()
     res.redirect('/')
   })
